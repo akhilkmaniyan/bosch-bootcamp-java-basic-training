@@ -5,7 +5,6 @@ public class AccountManagerService {
     private String name;
     private double balance;
 
-    // Constructor
     public AccountManagerService(String accountNumber, String name, double initialBalance) {
         this.accountNumber = accountNumber;
         this.name = name;
@@ -45,7 +44,6 @@ public class AccountManagerService {
         System.out.println("Balance: " + balance);
     }
 
-    // Getter methods
     public String getAccountNumber() {
         return accountNumber;
     }
