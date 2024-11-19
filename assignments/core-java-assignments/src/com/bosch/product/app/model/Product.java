@@ -18,6 +18,14 @@ public class Product implements java.io.Serializable {
 
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
     public Product(int id, ProductCategory category, String description, double price, boolean active) {
         this.id = id;
         this.category = category;
@@ -58,6 +66,6 @@ public class Product implements java.io.Serializable {
     @Override
     public String toString() {
         return "Product ID: " + id + ", Description: " + description + ", Category: " + category +
-                ", Price: " + price ;
+                ", Price: " + price;
     }
 }

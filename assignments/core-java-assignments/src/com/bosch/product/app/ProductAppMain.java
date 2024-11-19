@@ -9,6 +9,7 @@ import com.labs.java.core.arraylistoperations.Order;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.*;
 
 public class ProductAppMain {
     private static Scanner scanner = new Scanner(System.in);
@@ -32,6 +33,7 @@ public class ProductAppMain {
 
             int choice = scanner.nextInt();
             scanner.nextLine();  // Consume newline
+            ExecutorService es = Executors.newCachedThreadPool();
             int id;
             switch (choice) {
                 case 1:
@@ -87,23 +89,42 @@ public class ProductAppMain {
 
                     break;
                 case 6:
-                    System.out.println("6. Print Statics");
+                    System.out.println("Print Statistics");
+                    productService.printStatistics();
                     break;
                 case 7:
-                    System.out.println("7. Import");
-
-                    //To import product details from a file
+                    Callable<Boolean> importTask = new Callable<Boolean>() {
+                        @Override
+                        public Boolean call() throws Exception {
+                            return productService.importProducts();
+                        }
+                    };
+                    Future<Boolean> impFuture = es.submit(importTask);
+                    try {
+                        System.out.println(impFuture.get() ? "Imported successfully" : "Import failed");
+                    } catch (InterruptedException | ExecutionException e) {
+                        throw new RuntimeException(e);
+                    }
                     break;
                 case 8:
-                    //To export product details from a file
-                    System.out.println("8. Export");
+                    Callable<Boolean> exportTask = new Callable<Boolean>() {
+                        @Override
+                        public Boolean call() throws Exception {
+                            return productService.exportProducts();
+                        }
+                    };
+                    Future<Boolean> expFuture = es.submit(exportTask);
+                    try {
+                        System.out.println(expFuture.get() ? "Exported successfully" : "Export failed");
+                    } catch (InterruptedException | ExecutionException e) {
+                        throw new RuntimeException(e);
+                    }
                     break;
                 case 9:
-                    System.out.println("9. Exit");
-                    System.exit(1);
-                    break;
-                default:
-                    System.out.println("Invalid choice, try again.");
+                    System.out.println("Thank you for using ProductApp");
+                    scanner.close();
+                    es.shutdown();
+                    System.exit(0);
                     break;
             }
         }
