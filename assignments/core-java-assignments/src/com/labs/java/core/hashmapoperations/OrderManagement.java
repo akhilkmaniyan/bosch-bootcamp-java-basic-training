@@ -139,7 +139,7 @@ public class OrderManagement {
     }
 
     // Show Category-wise Count
-    public static void showCategoryWiseCount() {
+        public static void showCategoryWiseCount() {
         Map<String, Integer> categoryCount = new HashMap<>();
 
         for (Order order : orders.values()) {

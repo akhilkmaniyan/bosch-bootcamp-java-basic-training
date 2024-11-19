@@ -1,0 +1,1 @@
+100,MOBILES,SmartPhone,30000.0,true

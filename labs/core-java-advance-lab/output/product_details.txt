@@ -1,0 +1,4 @@
+Product Details:
+Id: 100
+Name: SmartPhone
+Price: 100
