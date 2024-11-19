@@ -1,6 +1,6 @@
 package com.bosch.product.app.exception;
 
-public class ProductValidationException extends Exception{
+public class ProductValidationException extends Exception {
 
     public ProductValidationException() {
         super();

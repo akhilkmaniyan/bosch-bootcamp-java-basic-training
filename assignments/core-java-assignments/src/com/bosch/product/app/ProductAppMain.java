@@ -61,7 +61,7 @@ public class ProductAppMain {
                     id = scanner.nextInt();
                     Product productIdToUpdate = updateProducts(ProductServiceImpl.products.get(id));
                     try {
-                        productService.updateProduct(productIdToUpdate.getId(),productIdToUpdate);
+                        productService.updateProduct(productIdToUpdate.getId(), productIdToUpdate);
                     } catch (ProductValidationException e) {
                         System.out.println(e.getMessage());
                     }
@@ -130,7 +130,7 @@ public class ProductAppMain {
         }
     }
 
-    private static Product updateProducts(Product product)  {
+    private static Product updateProducts(Product product) {
         System.out.println(" Enter the new Category");
         String categoryToUpdate = scanner.next();
         scanner.nextLine();

@@ -1,6 +1,6 @@
 package com.bosch.product.app.exception;
 
-public class NoProductFoundException extends Exception{
+public class NoProductFoundException extends Exception {
 
     public NoProductFoundException() {
         super();
