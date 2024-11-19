@@ -65,10 +65,22 @@ public class ProductAppMain {
                     }
                     break;
                 case 3:
-                    System.out.println("3. Delete Product");
+                    System.out.println(" Enter the product Id to delete");
+                    id = scanner.nextInt();
+                    try {
+                        productService.deleteProduct(id);
+                    } catch (ProductValidationException e) {
+                        throw new RuntimeException(e);
+                    }
                     break;
                 case 4:
-                    productService.viewProduct(new Product());
+                    System.out.println(" Enter the product Id to View");
+                    id = scanner.nextInt();
+                    try {
+                        productService.viewProduct(ProductServiceImpl.products.get(id));
+                    } catch (ProductValidationException e) {
+                        throw new RuntimeException(e);
+                    }
                     break;
                 case 5:
                     productService.viewAlProducts();

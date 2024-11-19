@@ -6,7 +6,7 @@ import com.bosch.product.app.model.Product;
 public interface ProductService {
     void addProduct(Product product) throws ProductValidationException;
     void updateProduct(int id,Product product) throws  ProductValidationException;
-    boolean deleteProduct();
+    void deleteProduct(int id) throws ProductValidationException ;
     void viewAlProducts();
-    void viewProduct(Product product);
+    void viewProduct(Product product) throws ProductValidationException;
 }
